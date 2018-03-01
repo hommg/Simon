@@ -23,10 +23,10 @@ as; easy, medium, hard and advanced).
 Each skill level is associated with a maximum sequence length per-round.
 As per the MB directions, the app will automatically speed up its execution
 of the stored sequence after the 5th, 9th and 13th signals have been added
-to the sequence (within the confines of one execution of the stored sequence).
-This interpretation circumvents the project directions where the difficulty
-level chosen will determine the speed (and, as well, increase thereof) of the
-button flashes.
+to the sequence (within the confines of one full execution of the stored
+sequence). This interpretation circumvents the project directions where the
+difficulty level chosen will determine the speed (and, as well, increase
+thereof) of the button flashes.
 
 Milton Bradley's Simon bounds the time between user selections to a maximum
 countdown value. Given that this project implements a maximum sequence length,
@@ -50,10 +50,11 @@ The StartActivity  controls the presentation of the views (similar-ish to
 presenting views modally in IOS).
 
 The GameActivity utilizes three fragments. The first fragment controls the
-displaying of the longest stored sequence. The second fragment controls the background
-thread containing the CountDownTimer. Finally, the third fragment controls the exit
-process from the GameActivity view.
+displaying of the longest stored sequence. The second fragment controls the
+background thread containing the CountDownTimer. Finally, the third fragment controls
+the exit process from the GameActivity view.
 
 Buttons are animated using an AnimationDrawable. Associated tones with each
-button are executed by means of a MediaPlayer. This project served as an effective
-introduction to the Kotlin programming language.
+button are executed by means of a MediaPlayer (the tones themselves are short MP3
+audio clips created in GarageBand). This project served as an effective introduction
+to the Kotlin programming language.
