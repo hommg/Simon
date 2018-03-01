@@ -143,7 +143,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
                     .commit()
         }
         endRoundFragment?.listener = this
-        endRoundFragment?.delay = model?.getFlashSpeed()
+        endRoundFragment?.delay = model?.getInitialFlashSpeed()
     }
 
     private fun getDifficultyLevelFromString(difficultyString: String?): DifficultyLevel? {

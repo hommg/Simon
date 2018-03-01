@@ -17,7 +17,7 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
     private var currentScore: Int
     private var timeToSelect: Long              //NOTE:- Constant in MB's Simon
     private var flashSpeed: Long
-    private var decrementList: ArrayList<Int> = arrayListOf(4, 8, 12)
+    private var decrementList: ArrayList<Int>
 
     //MARK:- Init
     init {
@@ -30,6 +30,14 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
 
         for (index in 0 until this.difficulty.params.initialSequenceLength) {
             addColorToSequence()
+        }
+
+        when (this.difficulty) {
+            DifficultyLevel.ADVANCED -> {
+                this.decrementList = arrayListOf(10, 14)
+                decrementFlashSpeed()
+            }
+            else -> this.decrementList = arrayListOf(6, 10, 14)
         }
     }
 
@@ -84,7 +92,9 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
 
     //MARK:- Var Mutations
     private fun decrementFlashSpeed() {
-        this.flashSpeed -= 250
+        //NOTE:- Value determined after testing,
+        // has not been sourced against MB's Simon
+        this.flashSpeed -= 400
     }
 
     /*
@@ -123,9 +133,9 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
     }
 
     //NOTE:- MB's Simon automatically speeds up after the 5th, 9th and 13th
-    // signals in a sequence (specified in their directions). The numbers
-    // in the decrementList correspond an array indices allowing adherence
-    // to the above-stated rule.
+    // signals in a sequence (specified in their directions). The numbers in
+    // the decrementList correspond to allowing adherence to the above-stated
+    // rule.
     fun speedShouldDecrement(): Boolean {
         if (this.decrementList.size > 0) {
             when (getSequenceSize() == this.decrementList.first()) {
