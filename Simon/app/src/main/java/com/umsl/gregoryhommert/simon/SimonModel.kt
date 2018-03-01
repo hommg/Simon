@@ -58,6 +58,10 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
         return this.flashSpeed
     }
 
+    fun getInitialFlashSpeed(): Long {
+        return this.difficulty.params.flashSpeed
+    }
+
     private fun getRandomColor(): SimonColor {
         val index = (Random().nextInt(SimonColor.values().size - 0) + 0)
         return SimonColor.values().elementAt(index)

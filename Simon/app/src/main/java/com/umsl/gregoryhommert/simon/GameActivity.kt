@@ -314,7 +314,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
             }
         }
 
-        handler!!.postDelayed(runnable, model!!.getFlashSpeed())
+        handler!!.postDelayed(runnable, model!!.getInitialFlashSpeed())
     }
 
     override fun performVictorySequence() {
