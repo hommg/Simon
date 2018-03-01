@@ -46,7 +46,7 @@ selection (not on every valid repetition of a sequence). As of the initial commi
 high scores are only persisted throughout the app session. Only the most current
 (greatest) high score is stored.
 
-The StartActivity  controls the presentation of the views (similar-ish to
+The StartActivity controls the presentation of the views/activities (similar-ish to
 presenting views modally in IOS).
 
 The GameActivity utilizes three fragments. The first fragment controls the
