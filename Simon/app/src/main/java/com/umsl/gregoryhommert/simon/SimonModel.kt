@@ -132,10 +132,10 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
         }
     }
 
-    //NOTE:- MB's Simon automatically speeds up after the 5th, 9th and 13th
-    // signals in a sequence (specified in their directions). The numbers in
-    // the decrementList correspond to allowing adherence to the above-stated
-    // rule.
+    //NOTE:- MB's Simon automatically speeds up after a 5th, 9th, or 13th
+    // signals in a sequence are added (specified in their directions).
+    // The numbers in the decrementList correspond to allowing adherence
+    // to the above-stated rule.
     fun speedShouldDecrement(): Boolean {
         if (this.decrementList.size > 0) {
             when (getSequenceSize() == this.decrementList.first()) {
