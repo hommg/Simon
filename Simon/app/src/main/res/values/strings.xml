@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Simon</string>
+    <string name="choose_difficulty_text">Choose a level:</string>
+    <string name="start_button_text">Start</string>
+    <string name="new_game_text">New Round</string>
+    <string name="high_score_text">High Score: </string>
+    <string name="current_score_text">Your Score: </string>
+    <string name="empty_text" />
+    <string name="game_over_text">Game Over!</string>
+    <string name="you_win_text">Round Won!</string>
+    <string name="performing_sequence_text">Simon is performing a sequence.</string>
+    <string name="simon_title_text">Simon</string>
+    <string name="exit_sequence_text">You may now make your selection.</string>
+    <string name="timer_elapsed_text">The timer has reached 0. The round is now over.</string>
+    <string name="incorrect_selection_text">Incorrect selection. Round is now terminating.</string>
+    <string name="round_completed_text">Congratulations! You have won this round.</string>
+    <string-array name="difficultyOptions_array">
+        <item>EASY</item>
+        <item>MEDIUM</item>
+        <item>HARD</item>
+        <item>ADVANCED</item>
+    </string-array>
+</resources>
