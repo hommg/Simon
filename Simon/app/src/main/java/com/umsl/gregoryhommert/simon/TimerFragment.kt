@@ -37,10 +37,6 @@ class TimerFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        //SOURCE:- This line was found on stack
-        // https://stackoverflow.com/questions/34409549/
-        // release-memory-of-particular-activity-when-it-is-destroyed
-        // while researching effective methods for cleaning up resources
         Runtime.getRuntime().gc()
         //Log.e("FRAGMENT", "$TIMERFRAG_TAG was destroyed.")
     }
