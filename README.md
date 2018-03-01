@@ -56,5 +56,7 @@ the exit process from the GameActivity view.
 
 Buttons are animated using an AnimationDrawable. Associated tones with each
 button are executed by means of a MediaPlayer (the tones themselves are short MP3
-audio clips created in GarageBand). This project served as an effective introduction
+audio clips created in GarageBand).
+
+This project served as an effective introduction
 to the Kotlin programming language.
