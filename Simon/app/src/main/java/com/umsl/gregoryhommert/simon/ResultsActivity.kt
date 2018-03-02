@@ -45,8 +45,8 @@ class ResultsActivity : Activity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         buttonPressed()
+        super.onBackPressed()
     }
 
     //MARK:- Setup Functions

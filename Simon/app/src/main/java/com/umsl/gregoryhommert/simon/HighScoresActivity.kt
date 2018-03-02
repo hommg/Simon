@@ -75,8 +75,12 @@ class HighScoresActivity : Activity() {
             }
             else -> {
                 for (index in 0 until scores.size) {
-                    this.highScoresToString!!.add("${index + 1}. "
-                            +scores.elementAt(index).toString())
+                    when (scores.elementAt(index) == 0) {
+                        true -> this.highScoresToString!!.add("${index + 1}. "
+                                +getString(R.string.empty_score_text))
+                        else -> this.highScoresToString!!.add("${index + 1}. "
+                                +scores.elementAt(index).toString())
+                    }
                 }
 
                 val remainder = (SIZE - scores.size)
@@ -107,18 +111,22 @@ class HighScoresActivity : Activity() {
     private fun clearScoresButtonPressed() {
         this.clearScoresPressed = true
         this.highScoresToString!!.clear()
-
+        setResultForActivity()
+        /*
         for (index in 0 until SIZE) {
             this.highScoresToString!!.add("${index + 1}. "
                     +getString(R.string.empty_score_text))
         }
 
         updateUI()
+        */
     }
 
+    /*
     private fun updateUI() {
         this.arrayAdapter!!.notifyDataSetChanged()
     }
+    */
 
     //MARK:- Set Result
     private fun setResultForActivity() {
