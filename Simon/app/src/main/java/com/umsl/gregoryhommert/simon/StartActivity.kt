@@ -1,9 +1,11 @@
 package com.umsl.gregoryhommert.simon
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.AnimationDrawable
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -15,11 +17,17 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
     companion object {
         private const val START_TAG = "StartActivity"
         private const val REQUEST_CODE_GAME = 0
+        private const val REQUEST_CODE_HIGH_SCORES = 2
+
+        private val REQUEST_CODE_PERMISSIONS = 1
+        private val PERMISSIONS: Array<String> = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
     //MARK:- Vars
     private var difficultySelected: String? = null
     private var highScore: Int? = null
+    private var highScoresModel: HighScoresModel? = null
 
     //MARK:- Activity Lifecycle
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +36,7 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
         setContentView(R.layout.activity_start)
 
         //MARK:- Setup Function Calls
+        verifyPermissions()
         setupSpinner()
         bindButtons()
     }
@@ -50,13 +59,29 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
 
         if (requestCode == REQUEST_CODE_GAME) {
             data?.let {
-                highScore = GameActivity.highScore(data)
                 val didWin = GameActivity.didWin(data)
                 val finalScore = GameActivity.finalScore(data)
+
+                if (this.highScoresModel!!.addIfPossible(finalScore)) {
+                    this.highScoresModel!!.persist()
+                    this.highScore = this.highScoresModel!!.getHighestScore()
+                }
 
                 val intent = ResultsActivity.newIntent(this@StartActivity,
                         finalScore, didWin, this.highScore!!)
                 startActivity(intent)
+            }
+        }
+
+        if (requestCode == REQUEST_CODE_HIGH_SCORES) {
+            data?.let {
+                val scoresWereCleared = HighScoresActivity.scoresWereCleared(data)
+
+                if (scoresWereCleared) {
+                    this.highScoresModel!!.clearHighScores()
+                    this.highScoresModel!!.persist()
+                    this.highScore = 0
+                }
             }
         }
     }
@@ -75,10 +100,26 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
 
     private fun bindButtons() {
         this.startButton.setOnClickListener {
-            //Mark:- Create Intent/ StartActivityForResult
+            //MARK:- Create Intent/ StartActivityForResult
             val intent = GameActivity.newIntent(this@StartActivity,
                     this.difficultySelected, this.highScore)
             startActivityForResult(intent, REQUEST_CODE_GAME)
+        }
+        this.viewHighScoresButton.setOnClickListener {
+            //MARK:- Create Intent/ StartActivityForResult
+            val intent = HighScoresActivity.newIntent(this@StartActivity,
+                    this.highScoresModel!!.getHighScores())
+            startActivityForResult(intent, REQUEST_CODE_HIGH_SCORES)
+        }
+    }
+
+    private fun populateHighScores() {
+        this.highScoresModel = HighScoresModel("high_scores.json",
+                getString(R.string.package_name))
+        this.highScoresModel!!.populate()
+
+        if (this.highScoresModel!!.getHighScores().isNotEmpty()) {
+            this.highScore = this.highScoresModel!!.getHighestScore()
         }
     }
 
@@ -89,5 +130,27 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         //NOTE:- Not implemented for scope of this project
+    }
+
+    //MARK:- Read/Write Permissions
+    private fun verifyPermissions() {
+        val permissionWrite = ActivityCompat.checkSelfPermission(this, PERMISSIONS[1])
+
+        when (permissionWrite != PackageManager.PERMISSION_GRANTED) {
+            true -> ActivityCompat.requestPermissions(this,
+                    PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+            else -> populateHighScores()
+        }
+    }
+
+    //SOURCE:- https://stackoverflow.com/questions/33162152/storage-permission-error-in-marshmallow
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            true -> populateHighScores()
+            else -> {
+                Log.e("MESSAGE", "ERROR granting permissions.")
+            }
+        }
     }
 }

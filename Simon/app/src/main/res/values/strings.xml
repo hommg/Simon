@@ -14,6 +14,11 @@
     <string name="timer_elapsed_text">The timer has reached 0. The round is now over.</string>
     <string name="incorrect_selection_text">Incorrect selection. Round is now terminating.</string>
     <string name="round_completed_text">Congratulations! You have won this round.</string>
+    <string name="package_name">com.umsl.gregoryhommert.simon</string>
+    <string name="view_high_scores_text">View High Scores</string>
+    <string name="high_scores_title_text">High Scores</string>
+    <string name="clear_scores_text">Clear Scores</string>
+    <string name="empty_score_text">--</string>
     <string-array name="difficultyOptions_array">
         <item>EASY</item>
         <item>MEDIUM</item>

@@ -31,7 +31,6 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
         private const  val EXTRA_FINAL_SCORE = "com.umsl.gregoryhommert.final_score"
 
         //Intents
-        fun highScore(intent: Intent) = intent.getIntExtra(EXTRA_HIGH_SCORE, 0)
         fun didWin(intent: Intent) = intent.getBooleanExtra(EXTRA_DID_WIN, false)
         fun finalScore(intent: Intent) = intent.getIntExtra(EXTRA_FINAL_SCORE, 0)
 
@@ -346,7 +345,6 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
 
     private fun returnResult(didWin: Boolean) {
         val data = Intent()
-        data.putExtra(EXTRA_HIGH_SCORE, model!!.getHighScore())
         data.putExtra(EXTRA_DID_WIN, didWin)
         data.putExtra(EXTRA_FINAL_SCORE, model!!.getCurrentScore())
         setResult(RESULT_OK, data)

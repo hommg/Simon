@@ -1,7 +1,5 @@
 package com.umsl.gregoryhommert.simon
 
-import android.os.Environment
-import java.io.*
 import java.util.*
 import kotlin.collections.ArrayList
 import android.util.Log
