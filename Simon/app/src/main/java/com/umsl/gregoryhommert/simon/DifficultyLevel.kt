@@ -1,7 +1,7 @@
 package com.umsl.gregoryhommert.simon
 
 enum class DifficultyLevel(val params: InitialDifficultyParams) {
-    EASY(InitialDifficultyParams(1, 3,
+    EASY(InitialDifficultyParams(1, 8,
             1500, 3000)),
     MEDIUM(InitialDifficultyParams(3, 14,
             1500, 3000)),
