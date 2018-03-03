@@ -65,10 +65,17 @@ selection (not on every valid repetition of a sequence). Only the most current
 The StartActivity controls the presentation of the views/activities (similar-ish to
 presenting views modally in IOS).
 
-The GameActivity utilizes three fragments. The first fragment controls the
-displaying of the longest stored sequence. The second fragment controls the
-background thread containing the CountDownTimer. Finally, the third fragment controls
-the exit process from the GameActivity view.
+The GameActivity utilizes three fragments:
+
+	SequenceFragment
+
+	TimerFragment
+
+	EndRoundFragment
+
+The first fragment controls thedisplaying of the longest stored sequence. The second
+fragment controls the background thread containing the CountDownTimer. Finally, the
+third fragment controls the exit process from the GameActivity view.
 
 Buttons are animated using an AnimationDrawable. Associated tones with each
 button are executed by means of a MediaPlayer (the tones themselves are short MP3
