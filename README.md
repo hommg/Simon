@@ -73,7 +73,7 @@ The GameActivity utilizes three fragments:
 
 	EndRoundFragment
 
-The first fragment controls thedisplaying of the longest stored sequence. The second
+The first fragment controls the displaying of the longest stored sequence. The second
 fragment controls the background thread containing the CountDownTimer. Finally, the
 third fragment controls the exit process from the GameActivity view.
 
