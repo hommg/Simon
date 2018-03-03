@@ -43,8 +43,8 @@ class HighScoresModel(fileName: String, packageName: String) {
         if(file.exists()) {
             //MARK:- Streams/Readers
             val fileInputStream = FileInputStream(file)
-            val inputStreamWriter = InputStreamReader(fileInputStream, "UTF-8")
-            val jsonReader = JsonReader(inputStreamWriter)
+            val inputStreamReader = InputStreamReader(fileInputStream, "UTF-8")
+            val jsonReader = JsonReader(inputStreamReader)
 
             //MARK:- Read
             jsonReader.beginObject()
@@ -62,7 +62,7 @@ class HighScoresModel(fileName: String, packageName: String) {
 
             //MARK:- Close Streams/Readers
             jsonReader.close()
-            inputStreamWriter.close()
+            inputStreamReader.close()
             fileInputStream.close()
             Log.e("MESSAGE", "${this.scores}")
         } else {
