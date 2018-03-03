@@ -69,8 +69,7 @@ class HighScoresActivity : Activity() {
 
         when (scores.isEmpty()) {
             true -> {
-                this.clearScoresButton.isEnabled = false
-                this.clearScoresButton.visibility = View.GONE
+                hideButton()
 
                 for (value in 0 until SIZE) {
                     this.highScoresToString!!.add("${value + 1}. "
@@ -79,8 +78,7 @@ class HighScoresActivity : Activity() {
             }
             else -> {
                 if ((scores.filter { it == 0 }).size == scores.size) {
-                    this.clearScoresButton.isEnabled = false
-                    this.clearScoresButton.visibility = View.GONE
+                    hideButton()
                 }
 
                 for (index in 0 until scores.size) {
@@ -129,6 +127,11 @@ class HighScoresActivity : Activity() {
 
         updateUI()
         */
+    }
+
+    private fun hideButton() {
+        this.clearScoresButton.isEnabled = false
+        this.clearScoresButton.visibility = View.GONE
     }
 
     /*
