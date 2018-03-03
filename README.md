@@ -21,7 +21,7 @@ The project directions, as well as a pdf from a 2002 release of the
 game are included in the repository for reference.
 
 This interpretation of those two sources contains four activites (with the
-fourth, and final listed in the comments above):
+fourth, and final, activity listed in the comments above):
 
 	StartActivity
 
