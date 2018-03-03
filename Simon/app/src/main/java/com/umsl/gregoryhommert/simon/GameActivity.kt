@@ -313,7 +313,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
             }
         }
 
-        handler!!.postDelayed(runnable, model!!.getInitialFlashSpeed())
+        handler?.postDelayed(runnable, model!!.getInitialFlashSpeed())
     }
 
     override fun performVictorySequence() {
@@ -346,7 +346,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
     private fun returnResult(didWin: Boolean) {
         val data = Intent()
         data.putExtra(EXTRA_DID_WIN, didWin)
-        data.putExtra(EXTRA_FINAL_SCORE, model!!.getCurrentScore())
+        data.putExtra(EXTRA_FINAL_SCORE, model?.getCurrentScore())
         setResult(RESULT_OK, data)
         this@GameActivity.finish()
     }
