@@ -63,7 +63,7 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
                 val finalScore = GameActivity.finalScore(data)
 
                 if (this.highScoresModel!!.addIfPossible(finalScore)) {
-                    this.highScoresModel!!.persist()
+                    this.highScoresModel?.persist()
                     this.highScore = this.highScoresModel?.getHighestScore()
                 }
 
@@ -78,8 +78,8 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
                 val scoresWereCleared = HighScoresActivity.scoresWereCleared(data)
 
                 if (scoresWereCleared) {
-                    this.highScoresModel!!.clearHighScores()
-                    this.highScoresModel!!.persist()
+                    this.highScoresModel?.clearHighScores()
+                    this.highScoresModel?.persist()
                     this.highScore = 0
                 }
             }
@@ -116,16 +116,16 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
     private fun populateHighScores() {
         this.highScoresModel = HighScoresModel("high_scores.json",
                 getString(R.string.package_name))
-        this.highScoresModel!!.populate()
+        this.highScoresModel?.populate()
 
         if (this.highScoresModel!!.getHighScores().isNotEmpty()) {
-            this.highScore = this.highScoresModel!!.getHighestScore()
+            this.highScore = this.highScoresModel?.getHighestScore()
         }
     }
 
     //MARK:- AdapterView.OnItemSelectedListener Functions
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        this.difficultySelected = p0!!.getItemAtPosition(p2) as? String
+        this.difficultySelected = p0?.getItemAtPosition(p2) as? String
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

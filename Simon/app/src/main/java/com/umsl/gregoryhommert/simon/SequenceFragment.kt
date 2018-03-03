@@ -62,7 +62,7 @@ class SequenceFragment : Fragment() {
         if (handler == null) {
             handler = Handler()
             //Log.e("FRAGMENT", "$SEQFRAG_TAG handler created.")
-            handler!!.postDelayed(runnable, delay!!)
+            handler?.postDelayed(runnable, delay!!)
         } else {
             //Log.e("FRAGMENT", "$SEQFRAG_TAG handler already exists.")
         }

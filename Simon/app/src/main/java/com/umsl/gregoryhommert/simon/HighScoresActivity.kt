@@ -58,7 +58,7 @@ class HighScoresActivity : Activity() {
     }
 
     override fun onBackPressed() {
-        setResultForActivity()
+        //setResultForActivity()
         super.onBackPressed()
     }
 
@@ -72,7 +72,7 @@ class HighScoresActivity : Activity() {
                 hideButton()
 
                 for (value in 0 until SIZE) {
-                    this.highScoresToString!!.add("${value + 1}. "
+                    this.highScoresToString?.add("${value + 1}. "
                             +getString(R.string.empty_score_text))
                 }
             }
@@ -83,9 +83,9 @@ class HighScoresActivity : Activity() {
 
                 for (index in 0 until scores.size) {
                     when (scores.elementAt(index) == 0) {
-                        true -> this.highScoresToString!!.add("${index + 1}. "
+                        true -> this.highScoresToString?.add("${index + 1}. "
                                 +getString(R.string.empty_score_text))
-                        else -> this.highScoresToString!!.add("${index + 1}. "
+                        else -> this.highScoresToString?.add("${index + 1}. "
                                 +scores.elementAt(index).toString())
                     }
                 }
@@ -94,7 +94,7 @@ class HighScoresActivity : Activity() {
 
                 if(remainder > 0) {
                     for (value in 0 until remainder) {
-                        this.highScoresToString!!.add("${value + 1 + scores.size}. "
+                        this.highScoresToString?.add("${value + 1 + scores.size}. "
                                 +getString(R.string.empty_score_text))
                     }
                 }
@@ -117,7 +117,7 @@ class HighScoresActivity : Activity() {
     //MARK:- Actions
     private fun clearScoresButtonPressed() {
         this.clearScoresPressed = true
-        this.highScoresToString!!.clear()
+        this.highScoresToString?.clear()
         setResultForActivity()
         /*
         for (index in 0 until SIZE) {

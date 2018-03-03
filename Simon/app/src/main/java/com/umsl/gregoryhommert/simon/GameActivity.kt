@@ -308,7 +308,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
         val runnable = object : Runnable {
             override fun run() {
                 flashButtonFromColor(model!!.getSequenceElement(comparisonPosition))
-                handler!!.removeCallbacks(this)
+                handler?.removeCallbacks(this)
                 handler = null
             }
         }
@@ -326,17 +326,17 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
                         flashButtonFromColor(melody.first())
                         playTone(melody.first().rawRes)
                         melody.removeAt(0)
-                        handler!!.postDelayed(this, 100)
+                        handler?.postDelayed(this, 100)
                     }
                     false -> {
-                        handler!!.removeCallbacks(this)
+                        handler?.removeCallbacks(this)
                         handler = null
                     }
                 }
             }
         }
 
-        handler!!.postDelayed(runnable, 100)
+        handler?.postDelayed(runnable, 100)
     }
 
     override fun triggerResults(didWin: Boolean) {

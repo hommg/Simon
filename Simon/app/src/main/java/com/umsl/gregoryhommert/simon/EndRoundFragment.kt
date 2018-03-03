@@ -59,7 +59,7 @@ class EndRoundFragment : Fragment() {
                     listener?.performVictorySequence()
                 }
             }
-            handler!!.postDelayed(runnable, (2 * delay!!))
+            handler?.postDelayed(runnable, (2 * delay!!))
         } else {
             //Log.e("FRAGMENT", "$ENDROUNDFRAG_TAG handler already exists.")
         }
