@@ -19,7 +19,7 @@ by Milton Bradley in 1978. As of the initial commit, this project only
 implements the 1-Player mode of the game.
 
 The project directions, as well as a pdf from a 2002 release of the
-game are included in the repository for reference.
+game, are included in the repository for reference.
 
 This interpretation of those two sources contains four activites (with the
 fourth, and final, activity listed in the comments above):
