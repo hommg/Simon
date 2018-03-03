@@ -15,7 +15,8 @@ EDIT: File updated 03/02/2018 to include remarks on final changes.
 
 This is the first project assignment for the Spring 2018 section
 of CMP SCI 5020. It is an adaption of the Simon game first released
-by Milton Bradley in 1978.
+by Milton Bradley in 1978. As of the initial commit, this project only
+implements the 1-Player mode of the game.
 
 The project directions, as well as a pdf from a 2002 release of the
 game are included in the repository for reference.
