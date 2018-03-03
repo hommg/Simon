@@ -2,11 +2,11 @@
 
 EDIT: File updated 03/02/2018 to include remarks on final changes.
 		
-	HighScoresActivity Added
+	HighScoresActivity added.
 
-	Extra-Credit parameters implemented
+	Extra-Credit parameters implemented.
 
-	MVC to control high score persistence implemented within StartActivity
+	MVC to control high score persistence implemented within StartActivity.
 
 	NOTE:- Pressing the back button during gameplay will forfeit
 	the user's ability to have their current score persisted.
