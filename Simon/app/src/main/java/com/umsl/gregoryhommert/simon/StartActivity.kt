@@ -64,7 +64,7 @@ class StartActivity : Activity(), AdapterView.OnItemSelectedListener  {
 
                 if (this.highScoresModel!!.addIfPossible(finalScore)) {
                     this.highScoresModel!!.persist()
-                    this.highScore = this.highScoresModel!!.getHighestScore()
+                    this.highScore = this.highScoresModel?.getHighestScore()
                 }
 
                 val intent = ResultsActivity.newIntent(this@StartActivity,

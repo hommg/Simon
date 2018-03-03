@@ -165,8 +165,8 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
             stopTimer()
             toggleButtons(false)
             val message = getString(R.string.incorrect_selection_text)+"\n"+
-                    getString(R.string.current_score_text)+model?.getCurrentScore()+"\n"+
-                    getString(R.string.high_score_text)+model?.getHighScore()
+                    getString(R.string.current_score_text)+" "+model?.getCurrentScore()+"\n"+
+                    getString(R.string.high_score_text)+" "+model?.getHighScore()
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             playTone(R.raw.g2_d2)
             endRoundFragment?.windDown(true)
@@ -224,8 +224,8 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
             } else {
                 toggleButtons(false)
                 val message = getString(R.string.round_completed_text)+"\n"+
-                        getString(R.string.current_score_text)+model?.getCurrentScore()+"\n"+
-                        getString(R.string.high_score_text)+model?.getHighScore()
+                        getString(R.string.current_score_text)+" "+model?.getCurrentScore()+"\n"+
+                        getString(R.string.high_score_text)+" "+model?.getHighScore()
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 endRoundFragment?.windDown(false)
             }
@@ -254,8 +254,8 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
     override fun prepareForSequence() {
         toggleButtons(false)
         val message = getString(R.string.performing_sequence_text)+"\n"+
-                getString(R.string.current_score_text)+model?.getCurrentScore()+"\n"+
-                getString(R.string.high_score_text)+model?.getHighScore()
+                getString(R.string.current_score_text)+" "+model?.getCurrentScore()+"\n"+
+                getString(R.string.high_score_text)+" "+model?.getHighScore()
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -273,8 +273,8 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
     override fun exitSequence() {
         toggleButtons(true)
         val message = getString(R.string.exit_sequence_text)+"\n"+
-                getString(R.string.current_score_text)+model?.getCurrentScore()+"\n"+
-                getString(R.string.high_score_text)+model?.getHighScore()
+                getString(R.string.current_score_text)+" "+model?.getCurrentScore()+"\n"+
+                getString(R.string.high_score_text)+" "+model?.getHighScore()
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         startTimer()
     }
@@ -283,8 +283,8 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
     override fun triggerEndRoundFragment() {
         toggleButtons(false)
         val message = getString(R.string.timer_elapsed_text)+"\n"+
-                getString(R.string.current_score_text)+model?.getCurrentScore()+"\n"+
-                getString(R.string.high_score_text)+model?.getHighScore()
+                getString(R.string.current_score_text)+" "+model?.getCurrentScore()+"\n"+
+                getString(R.string.high_score_text)+" "+model?.getHighScore()
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         playTone(R.raw.g2_d2)
         endRoundFragment?.windDown(true)

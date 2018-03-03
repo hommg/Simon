@@ -46,7 +46,13 @@ class SequenceFragment : Fragment() {
 
     //MARK:- Var Mutations
     private fun incrementSequenceIndex() {
-        this.sequenceIndex = this.sequenceIndex!! + 1
+        when (this.sequenceIndex != null) {
+            true -> this.sequenceIndex = this.sequenceIndex!! + 1
+            else -> {
+                Log.e("FRAGMENT", "$SEQFRAG_TAG: ERROR!!! Found null while" +
+                        "unwrapping sequenceIndex (${this.sequenceIndex}).")
+            }
+        }
     }
 
     //MARK:- Sequence Functions

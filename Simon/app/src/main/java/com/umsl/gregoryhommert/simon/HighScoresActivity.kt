@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_high_scores.*
 
@@ -68,12 +69,20 @@ class HighScoresActivity : Activity() {
 
         when (scores.isEmpty()) {
             true -> {
+                this.clearScoresButton.isEnabled = false
+                this.clearScoresButton.visibility = View.GONE
+
                 for (value in 0 until SIZE) {
                     this.highScoresToString!!.add("${value + 1}. "
                             +getString(R.string.empty_score_text))
                 }
             }
             else -> {
+                if ((scores.filter { it == 0 }).size == scores.size) {
+                    this.clearScoresButton.isEnabled = false
+                    this.clearScoresButton.visibility = View.GONE
+                }
+
                 for (index in 0 until scores.size) {
                     when (scores.elementAt(index) == 0) {
                         true -> this.highScoresToString!!.add("${index + 1}. "
