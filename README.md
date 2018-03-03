@@ -59,9 +59,8 @@ does mirror the project directions.
 In place of maintaining a high-score and current-score display on the GameActivity
 screen, this project presents those updates through the use of Toasts so as to
 preserve the layout and UI of the app. Current scores are incremented on every valid
-selection (not on every valid repetition of a sequence). As of the initial commit,
-high scores are only persisted throughout the app session. Only the most current
-(greatest) high score is stored.
+selection (not on every valid repetition of a sequence). Only the most current
+(greatest) high score is displayed during gameplay.
 
 The StartActivity controls the presentation of the views/activities (similar-ish to
 presenting views modally in IOS).
