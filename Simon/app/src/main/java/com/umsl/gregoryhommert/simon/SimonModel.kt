@@ -25,17 +25,19 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
         this.timeToSelect = this.difficulty.params.timeToSelect
         this.flashSpeed = this.difficulty.params.flashSpeed
         this.sequence = ArrayList<SimonColor>()
+        this.decrementList = ArrayList<Int>()
 
         for (index in 0 until this.difficulty.params.initialSequenceLength) {
             addColorToSequence()
         }
 
-        when (this.difficulty) {
-            DifficultyLevel.ADVANCED -> {
-                this.decrementList = arrayListOf(10, 14)
-                decrementFlashSpeed()
+        val decrementValues = arrayListOf(6, 10, 14)
+        for (item in decrementValues) {
+            Log.i("INFO", "$item")
+            when (this.difficulty.params.initialSequenceLength > item) {
+                true -> decrementFlashSpeed()
+                else -> this.decrementList.add(item)
             }
-            else -> this.decrementList = arrayListOf(6, 10, 14)
         }
     }
 
