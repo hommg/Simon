@@ -33,7 +33,6 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
 
         val decrementValues = arrayListOf(6, 10, 14)
         for (item in decrementValues) {
-            Log.i("INFO", "$item")
             when (this.difficulty.params.initialSequenceLength > item) {
                 true -> decrementFlashSpeed()
                 else -> this.decrementList.add(item)
@@ -138,7 +137,7 @@ class SimonModel(_difficulty: DifficultyLevel? = DifficultyLevel.EASY, _highScor
     // to the above-stated rule.
     fun speedShouldDecrement(): Boolean {
         if (this.decrementList.size > 0) {
-            when (getSequenceSize() == this.decrementList.first()) {
+            when (this.sequence.size == this.decrementList.first()) {
                 true -> {
                     decrementFlashSpeed()
                     this.decrementList.removeAt(0)
