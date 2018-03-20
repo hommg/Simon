@@ -62,8 +62,7 @@ preserve the layout and UI of the app. Current scores are incremented on every v
 selection (not on every valid repetition of a sequence). Only the most current
 (greatest) high score is displayed during gameplay.
 
-The StartActivity controls the presentation of the views/activities (similar-ish to
-presenting views modally in IOS).
+The StartActivity controls the presentation of the views/activities.
 
 The GameActivity utilizes three fragments:
 
