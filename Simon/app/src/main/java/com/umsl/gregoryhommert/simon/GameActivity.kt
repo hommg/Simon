@@ -160,7 +160,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
         if (isValidSelection(color)) {
             playTone(color.rawRes)
             model?.incrementScore()
-            progressGamePlay(color)
+            progressGamePlay()
         } else {
             stopTimer()
             toggleButtons(false)
@@ -208,7 +208,7 @@ class GameActivity : Activity(), SequenceFragment.SequenceFragmentListener,
         }
     }
 
-    private fun progressGamePlay(color: SimonColor) {
+    private fun progressGamePlay() {
         if (this.comparisonPosition < (model!!.getSequenceSize() - 1)) {
             incrementComparisonPosition()
             resetTimer()
